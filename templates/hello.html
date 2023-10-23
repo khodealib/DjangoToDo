@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Hello</title>
-    </head>
-    <body>
-        <h3>Hello {{ name|upper }}</h3>
-        {% if is_admin %}
-        	{{ name }}, you are admin user!
-        {% endif %}
-    </body>
-</html>
+{% extends 'base.html' %}
+{% block title %}
+    Hello
+{% endblock %}
+
+{% block content %}
+    <h3>Hello {{ name|upper }}</h3>
+    {% if is_admin %}
+        {{ name }}, you are admin user!
+    {% endif %}
+{% endblock %}
