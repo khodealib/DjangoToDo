@@ -9,4 +9,8 @@ def home(request: HttpRequest) -> HttpResponse:
 
 
 def say_hello(request: HttpRequest) -> HttpResponse:
-    return render(request, "hello.html")
+    context = {
+        "name": "Ali",
+        "is_admin": True,
+    }
+    return render(request, "hello.html", context=context)
