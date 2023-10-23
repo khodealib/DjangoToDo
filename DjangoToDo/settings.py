@@ -24,7 +24,12 @@ SECRET_KEY = "django-insecure-sof4p8l1q4wnmuqp#kd=pv6do0qzidiop&=4)39c02n)%-0r#*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
+if DEBUG:
+    INTERNAL_IPS = [
+        "127.0.0.1",
+    ]
 
 # Application definition
 
@@ -35,8 +40,20 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+]
+
+LOCAL_APPS = [
     "home",
 ]
+
+THIRD_PARTY_APPS = []
+
+DEV_APPS = [
+    "debug_toolbar",
+]
+
+if DEBUG:
+    INSTALLED_APPS += DEV_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -47,6 +64,13 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+DEV_MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+]
+
+if DEBUG:
+    MIDDLEWARE += DEV_MIDDLEWARE
 
 ROOT_URLCONF = "DjangoToDo.urls"
 
