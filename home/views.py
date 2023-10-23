@@ -3,9 +3,12 @@ from django.http.request import HttpRequest
 
 from django.shortcuts import render
 
+from home.models import Todo
+
 
 def home(request: HttpRequest) -> HttpResponse:
-    return render(request, "home.html")
+    todos = Todo.objects.all()
+    return render(request, "home.html", {"todos": todos})
 
 
 def say_hello(request: HttpRequest) -> HttpResponse:
