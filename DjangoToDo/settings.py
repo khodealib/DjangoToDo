@@ -55,6 +55,8 @@ DEV_APPS = [
 if DEBUG:
     INSTALLED_APPS += DEV_APPS
 
+INSTALLED_APPS += LOCAL_APPS + THIRD_PARTY_APPS
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
