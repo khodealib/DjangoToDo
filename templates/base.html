@@ -1,10 +1,23 @@
+{% load django_bootstrap5 %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Base{% endblock %}</title>
+        {% bootstrap_css %}
+        <style>
+            .jumbotron {
+                padding: 20px;
+                margin-bottom: 20px;
+                background-color: #e9ecef;
+            }
+        </style>
     </head>
     <body>
+        {% bootstrap_messages %}
+        {% include 'includes/navbar.html' %}
         {% block content %}{% endblock %}
+        {% bootstrap_javascript %}
     </body>
 </html>

@@ -46,7 +46,9 @@ LOCAL_APPS = [
     "home",
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    "django_bootstrap5",
+]
 
 DEV_APPS = [
     "debug_toolbar",
