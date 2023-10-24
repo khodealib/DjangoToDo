@@ -17,3 +17,8 @@ def say_hello(request: HttpRequest) -> HttpResponse:
         "is_admin": True,
     }
     return render(request, "hello.html", context=context)
+
+
+def todo_detail(request: HttpRequest, todo_id: int) -> HttpResponse:
+    todo = Todo.objects.get(id=todo_id)
+    return render(request, "detail.html", {"todo": todo})

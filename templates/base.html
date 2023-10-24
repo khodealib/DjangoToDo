@@ -12,12 +12,15 @@
                 margin-bottom: 20px;
                 background-color: #e9ecef;
             }
+            .base-content {
+                margin: 10px;
+            }
         </style>
     </head>
     <body>
         {% bootstrap_messages %}
         {% include 'includes/navbar.html' %}
-        {% block content %}{% endblock %}
+        <div class="base-content">{% block content %}{% endblock %}</div>
         {% bootstrap_javascript %}
     </body>
 </html>

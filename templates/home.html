@@ -4,6 +4,6 @@
 {% endblock %}
 {% block content %}
     {% for todo in todos %}
-        <h2>{{ todo.title|title }}</h2>
+        <h2><a href="{% url 'home:todo_detail' todo.pk %}">{{ todo.title|title }}</a></h2>
     {% endfor %}
 {% endblock %}
