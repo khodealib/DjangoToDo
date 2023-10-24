@@ -3,7 +3,12 @@
     Home
 {% endblock %}
 {% block content %}
-    {% for todo in todos %}
-        <h2><a href="{% url 'home:todo_detail' todo.pk %}">{{ todo.title|title }}</a></h2>
-    {% endfor %}
+    <div class="card">
+        {% for todo in todos %}
+            <a class="card-body"
+               href="{% url 'home:todo_detail' todo.pk %}">
+                {{ todo.title|title }}
+            </a>
+        {% endfor %}
+    </div>
 {% endblock %}
