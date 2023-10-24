@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.http.request import HttpRequest
 from django.shortcuts import render, redirect
 
+from home.forms import TodoCreateForm
 from home.models import Todo
 
 
@@ -26,3 +27,18 @@ def todo_delete(request: HttpRequest, todo_id: int) -> HttpResponse:
     Todo.objects.get(id=todo_id).delete()
     messages.success(request, "Todo deleted successfully!")
     return redirect("home:home")
+
+
+def todo_create(request: HttpRequest) -> HttpResponse:
+    if request.method == "POST":
+        form = TodoCreateForm(request.POST)
+        if form.is_valid():
+            Todo.objects.create(
+                title=form.cleaned_data["title"],
+                body=form.cleaned_data["body"],
+                created=form.cleaned_data["created"],
+            )
+            messages.success(request, "Todo created successfully!")
+            return redirect("home:home")
+    form = TodoCreateForm()
+    return render(request, "create.html", {"form": form})
