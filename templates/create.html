@@ -4,10 +4,10 @@
 {% endblock %}
 
 {% block content %}
-    <h3>Create Todo</h3>
-    <form action="{% url 'home:todo_create' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Create" class="btn btn-info">
-    </form>
+	<h3>Create Todo</h3>
+	<form action="{% url 'home:todo_create' %}" method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Create" class="btn btn-info">
+	</form>
 {% endblock %}

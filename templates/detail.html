@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% block title %}
-    {{ todo.title|title }}
+	{{ todo.title|title }}
 {% endblock %}
 
 {% block content %}
-    <a href="{% url 'home:todo_delete' todo.id %}" class="btn btn-danger">
-        Delete
-    </a>
-    <a href="{% url 'home:todo_update' todo.id %}" class="btn btn-info">
-        Update
-    </a>
-    <h3>{{ todo.title }}</h3>
-    <small>{{ todo.created }}</small>
-    <hr>
-    <p>{{ todo.body }}</p>
+	<a href="{% url 'home:todo_delete' todo.id %}" class="btn btn-danger">
+		Delete
+	</a>
+	<a href="{% url 'home:todo_update' todo.id %}" class="btn btn-info">
+		Update
+	</a>
+	<h3>{{ todo.title }}</h3>
+	<small>{{ todo.created }}</small>
+	<hr>
+	<p>{{ todo.body }}</p>
 {% endblock %}
