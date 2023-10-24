@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 
@@ -30,7 +30,6 @@ def user_login(request):
         form = UserLoginForm(request.POST)
         if form.is_valid():
             user = authenticate(request, **form.cleaned_data)
-            print("auth is ok")
             if user is not None:
                 login(request, user)
                 messages.success(request, "Logged in successfully!")
@@ -39,3 +38,9 @@ def user_login(request):
 
     form = UserLoginForm()
     return render(request, "login.html", {"form": form})
+
+
+def user_logout(request):
+    logout(request)
+    messages.success(request, "Logged out successfully!")
+    return redirect("home:home")
