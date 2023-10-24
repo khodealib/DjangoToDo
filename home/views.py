@@ -11,14 +11,6 @@ def home(request: HttpRequest) -> HttpResponse:
     return render(request, "home.html", {"todos": todos})
 
 
-def say_hello(request: HttpRequest) -> HttpResponse:
-    context = {
-        "name": "Ali",
-        "is_admin": True,
-    }
-    return render(request, "hello.html", context=context)
-
-
 def todo_detail(request: HttpRequest, todo_id: int) -> HttpResponse:
     todo = Todo.objects.get(id=todo_id)
     return render(request, "detail.html", {"todo": todo})
