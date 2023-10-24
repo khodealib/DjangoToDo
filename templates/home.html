@@ -3,6 +3,20 @@
 	Home
 {% endblock %}
 {% block content %}
+	{% if request.user.is_authenticated %}
+		<h4>{{ request.user }}</h4>
+		<a href="{% url 'accounts:user_logout' %}" class="btn btn-danger">
+			Logout
+		</a>
+	{% else %}
+		<a href="{% url 'accounts:user_login' %}" class="btn btn-info">
+			Login
+		</a>
+		<a href="{% url 'accounts:user_register' %}" class="btn btn-info">
+			Register
+		</a>
+	{% endif %}
+
 	<a href="{% url 'home:todo_create' %}" class="btn btn-success">
 		Create Todo
 	</a>

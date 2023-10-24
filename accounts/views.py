@@ -41,6 +41,10 @@ def user_login(request):
 
 
 def user_logout(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Your not logged in user!")
+        return redirect("home:home")
+
     logout(request)
     messages.success(request, "Logged out successfully!")
     return redirect("home:home")
