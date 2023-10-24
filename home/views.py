@@ -40,7 +40,7 @@ def todo_create(request):
             )
             messages.success(request, "Todo created successfully!")
             return redirect("home:home")
-    
+
     form = TodoCreateForm()
     return render(request, "create.html", {"form": form})
 
@@ -53,6 +53,6 @@ def todo_update(request, todo_id: int):
             form.save()
             messages.success(request, "Todo updated successfully!")
             return redirect("home:todo_detail", todo_id)
-    
+
     form = TodoUpdateForm(instance=todo)
     return render(request, "update.html", {"form": form, "todo_id": todo.id})
