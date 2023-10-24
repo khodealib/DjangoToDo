@@ -4,8 +4,11 @@
 {% endblock %}
 
 {% block content %}
-    <a href="{% url 'home:todo_delete' todo.id %}" class="btn
-    btn-danger">Delete
+    <a href="{% url 'home:todo_delete' todo.id %}" class="btn btn-danger">
+        Delete
+    </a>
+    <a href="{% url 'home:todo_update' todo.id %}" class="btn btn-info">
+        Update
     </a>
     <h3>{{ todo.title }}</h3>
     <small>{{ todo.created }}</small>

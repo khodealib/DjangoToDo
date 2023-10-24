@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.http.request import HttpRequest
 from django.shortcuts import render, redirect
 
-from home.forms import TodoCreateForm
+from home.forms import TodoCreateForm, TodoUpdateForm
 from home.models import Todo
 
 
@@ -42,3 +42,16 @@ def todo_create(request: HttpRequest) -> HttpResponse:
             return redirect("home:home")
     form = TodoCreateForm()
     return render(request, "create.html", {"form": form})
+
+
+def todo_update(request: HttpRequest, todo_id: int) -> HttpResponse:
+    todo = Todo.objects.get(id=todo_id)
+    if request.method == "POST":
+        form = TodoUpdateForm(request.POST, instance=todo)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Todo updated successfully!")
+            return redirect("home:todo_detail", todo_id)
+
+    form = TodoUpdateForm(instance=todo)
+    return render(request, "update.html", {"form": form, "todo_id": todo.id})

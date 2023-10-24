@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+	Update Todo
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'home:todo_update' todo_id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-info" value="Update">
+    </form>
+{% endblock %}

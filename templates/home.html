@@ -3,10 +3,12 @@
     Home
 {% endblock %}
 {% block content %}
+    <a href="{% url 'home:todo_create' %}" class="btn btn-success">Create
+        Todo</a>
     <div class="card">
         {% for todo in todos %}
             <a class="card-body"
-               href="{% url 'home:todo_detail' todo.pk %}">
+               href="{% url 'home:todo_detail' todo.id %}">
                 {{ todo.title|title }}
             </a>
         {% endfor %}
