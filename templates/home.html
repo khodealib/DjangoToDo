@@ -4,8 +4,6 @@
 {% endblock %}
 {% block content %}
     {% for todo in todos %}
-        <h3>{{ todo.title }}</h3>
-        <small>{{ todo.created }}</small>
-        <p>{{ todo.body }}</p>
+        <h2>{{ todo.title|title }}</h2>
     {% endfor %}
 {% endblock %}
