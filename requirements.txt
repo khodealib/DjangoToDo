@@ -1,0 +1,4 @@
+Django==4.2
+django-bootstrap5==23.3
+black==23.10.1
+django-debug-toolbar==4.2.0
