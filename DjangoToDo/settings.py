@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
 LOCAL_APPS = [
     "home",
+    "accounts",
 ]
 
 THIRD_PARTY_APPS = [
